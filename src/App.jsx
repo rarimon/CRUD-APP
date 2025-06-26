@@ -1,12 +1,18 @@
 import React from 'react';
 import MainLayout from "./layouts/MainLayout.jsx";
+import {BrowserRouter, Route, Routes} from "react-router";
+import HomePage from "./pages/HomePage.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 const App = () => {
     return (
-        <div>
-            <h1>This Crud App</h1>
-            <MainLayout/>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+            </Routes>
+
+        </BrowserRouter>
     );
 };
 

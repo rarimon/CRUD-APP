@@ -1,12 +1,12 @@
 import React from 'react';
 import MainLayout from "../layouts/MainLayout.jsx";
 
-const HomePage = () => {
+const ProfilePage = () => {
     return (
         <MainLayout>
-            HOME
+            this is profile page !
         </MainLayout>
     );
 };
 
-export default HomePage;
+export default ProfilePage;
