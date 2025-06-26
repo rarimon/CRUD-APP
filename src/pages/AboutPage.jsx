@@ -1,12 +1,12 @@
 import React from 'react';
 import MainLayout from "../layouts/MainLayout.jsx";
 
-const HomePage = () => {
+const AboutPage = () => {
     return (
         <MainLayout>
-            HOME
+            about page
         </MainLayout>
     );
 };
 
-export default HomePage;
+export default AboutPage;
