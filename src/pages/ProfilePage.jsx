@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout.jsx";
 const ProfilePage = () => {
     return (
         <MainLayout>
-            this is profile page
+            this is profile page !
         </MainLayout>
     );
 };
