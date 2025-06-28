@@ -1,6 +1,41 @@
 import React from 'react';
+import {LoginReqest} from "../apirequest/ApiRequest.js";
+import {useNavigate} from "react-router";
 
 const LoginForm = () => {
+    let navigate = useNavigate();
+
+let [formData, setFormData] = React.useState({});
+
+const inputHandler=(event)=>{
+    let {name,value} = event.target;
+    setFormData(prevObj => ({...prevObj,[name]:value}));
+}
+
+const submitForm=async (event)=>{
+    event.preventDefault();
+
+      try{
+          let res=await LoginReqest(formData);
+          if(res){
+              sessionStorage.setItem('token',res);
+              alert("login successfully");
+              navigate('/');
+          }else {
+              alert("login failed");
+              navigate('/login');
+          }
+
+      }
+      catch(err){
+          console.error(err);
+          alert("Login failed due to login");
+
+      }
+
+}
+
+
     return (
         <div>
             <div className="container my-5">
@@ -11,12 +46,12 @@ const LoginForm = () => {
                                 <h2>Login</h2>
                             </div>
                             <div className="card-body">
-                                <form>
+                                <form onSubmit={submitForm}>
                                    <div className="mb-3">
-                                       <input className="form-control" type="email" name="email" placeholder="Email" required />
+                                       <input onChange={inputHandler} className="form-control" type="email" name="email" placeholder="Email" required />
                                    </div>
                                     <div className="mb-3">
-                                        <input className="form-control" type="password" name="password" placeholder="Password" required />
+                                        <input onChange={inputHandler} className="form-control" type="password" name="password" placeholder="Password" required />
                                     </div>
                                     <div className="mb-3 text-center">
                                         <button className="btn btn-success">Login</button>
