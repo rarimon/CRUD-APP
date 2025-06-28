@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, NavLink} from "react-router";
+import {Flip, toast} from "react-toastify";
 
 const Navbar = () => {
 
@@ -7,10 +8,12 @@ let token=sessionStorage.getItem('token');
 
 const LogOut = (e) => {
     e.preventDefault();
-    sessionStorage.removeItem('token');
-    window.location.href = '/login';
-}
 
+    sessionStorage.removeItem('token');
+    toast.success("Logout successfull!");
+    window.location.href = '/login';
+
+}
 
     return (
         <div>
@@ -28,7 +31,7 @@ const LogOut = (e) => {
                                 <NavLink to={"/"} className="nav-link active" aria-current="page" >Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to={"/"} className="nav-link" >User List</NavLink>
+                                <NavLink to={"/products"} className="nav-link" >Product List</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to={"/profile"} className="nav-link" >Profile</NavLink>

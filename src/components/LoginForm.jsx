@@ -1,6 +1,7 @@
 import React from 'react';
 import {LoginReqest} from "../apirequest/ApiRequest.js";
 import {useNavigate} from "react-router";
+import {toast} from "react-toastify";
 
 const LoginForm = () => {
     let navigate = useNavigate();
@@ -19,10 +20,10 @@ const submitForm=async (event)=>{
           let res=await LoginReqest(formData);
           if(res){
               sessionStorage.setItem('token',res);
-              alert("login successfully");
+              toast.success("Login successfull!");
               navigate('/');
           }else {
-              alert("login failed");
+              toast.warning("Username & Password Wrong !");
               navigate('/login');
           }
 
